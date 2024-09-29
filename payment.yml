@@ -31,6 +31,15 @@ spec:
         project: roboshop
         tier: app
     spec:
+      affinity:
+        nodeAffinity:
+          requiredDuringSchedulingIgnoredDuringExecution:
+            nodeSelectorTerms:
+            - matchExpressions:
+              - key: nodenum
+                operator: In
+                values:
+                - "2"
       containers:
       - name: payment
         image: joindevops/payment:v1

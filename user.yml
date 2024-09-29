@@ -29,6 +29,15 @@ spec:
         project: roboshop
         tier: app
     spec:
+      affinity:
+        nodeAffinity:
+          requiredDuringSchedulingIgnoredDuringExecution:
+            nodeSelectorTerms:
+            - matchExpressions:
+              - key: nodenum
+                operator: In
+                values:
+                - "1"
       containers:
       - name: user
         image: joindevops/user:v1

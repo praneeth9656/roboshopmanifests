@@ -30,6 +30,15 @@ spec:
         project: roboshop
         tier: app
     spec:
+      affinity:
+        nodeAffinity:
+          requiredDuringSchedulingIgnoredDuringExecution:
+            nodeSelectorTerms:
+            - matchExpressions:
+              - key: nodenum
+                operator: In
+                values:
+                - "1"
       containers:
       - name: shipping
         image: joindevops/shipping:v1

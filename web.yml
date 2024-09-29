@@ -133,6 +133,15 @@ spec:
         project: roboshop
         tier: web
     spec:
+      affinity:
+        nodeAffinity:
+          requiredDuringSchedulingIgnoredDuringExecution:
+            nodeSelectorTerms:
+              - matchExpressions:
+                  - key: nodenum
+                    operator: In
+                    values:
+                    - "3"
       containers:
       - name: web
         image: joindevops/web:v1

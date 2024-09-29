@@ -31,6 +31,15 @@ spec:
         project: roboshop
         tier: app
     spec:
+      affinity:
+        nodeAffinity:
+          requiredDuringSchedulingIgnoredDuringExecution:
+            nodeSelectorTerms:
+              - matchExpressions:
+                  - key: nodenum
+                    operator: In
+                    values:
+                    - "1"
       containers:
       - name: cart
         image: joindevops/cart:v1

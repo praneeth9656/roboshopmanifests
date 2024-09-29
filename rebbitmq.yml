@@ -31,6 +31,15 @@ spec:
         project: roboshop
         tier: db
     spec:
+      affinity:
+        nodeAffinity:
+          requiredDuringSchedulingIgnoredDuringExecution:
+            nodeSelectorTerms:
+            - matchExpressions:
+              - key: nodenum
+                operator: In
+                values:
+                - "3"
       containers:
       - name: rabbitmq
         image: rabbitmq
